@@ -1,0 +1,82 @@
+<section class="blog">
+  <div class="container">
+    <h1 class="title">Блог</h1>
+    <div class="blog-header">
+
+      <div class="blog-header-applied">
+        <div class="blog-applied-filter" *ngFor="let appliedCategory of appliedFilters">
+          <span>{{appliedCategory.name}}</span>
+          <a (click)="removeAppliedFilter(appliedCategory)">
+
+            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_9954_586)">
+                <line x1="1.93553" y1="3.15002" x2="13.9563" y2="15.1708" stroke="#709FDC" stroke-linecap="round"/>
+                <line x1="13.9236" y1="3.12984" x2="1.90278" y2="15.1507" stroke="#709FDC" stroke-linecap="round"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_9954_586">
+                  <rect width="16" height="16" fill="white" transform="translate(0 0.5)"/>
+                </clipPath>
+              </defs>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="catalog-sorting" (click)="toggleSorting()" [class.open]="sortingOpen">
+        <div class="catalog-sorting-head">
+          <span>Фильтр</span>
+          <svg *ngIf="!sortingOpen" width="20" height="21" viewBox="0 0 20 21" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M10 14.5C9.41668 14.5 8.83335 14.275 8.39168 13.8334L2.95835 8.40003C2.71668 8.15837 2.71668 7.75837 2.95835 7.5167C3.20002 7.27503 3.60002 7.27503 3.84168 7.5167L9.27502 12.95C9.67502 13.35 10.325 13.35 10.725 12.95L16.1583 7.5167C16.4 7.27503 16.8 7.27503 17.0417 7.5167C17.2833 7.75837 17.2833 8.15837 17.0417 8.40003L11.6083 13.8334C11.1667 14.275 10.5833 14.5 10 14.5Z"
+              fill="#071739"/>
+          </svg>
+
+          <svg *ngIf="sortingOpen" width="20" height="20" viewBox="0 0 20 20" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M9.99998 5.99997C10.5833 5.99997 11.1667 6.22497 11.6083 6.66663L17.0417 12.1C17.2833 12.3416 17.2833 12.7416 17.0417 12.9833C16.8 13.225 16.4 13.225 16.1583 12.9833L10.725 7.54997C10.325 7.14997 9.67498 7.14997 9.27498 7.54997L3.84165 12.9833C3.59999 13.225 3.19998 13.225 2.95832 12.9833C2.71665 12.7416 2.71665 12.3416 2.95832 12.1L8.39165 6.66663C8.83332 6.22497 9.41665 5.99997 9.99998 5.99997Z"
+              fill="#071739"/>
+          </svg>
+
+        </div>
+        <div class="catalog-sorting-body">
+
+
+          <div id="{{category.id}}" class="catalog-sorting-item" *ngFor="let category of categories"
+               (click)="updateParams(category.url)" [class.active]="activeParams.categories.includes(category.url)">
+            <span>
+              {{category.name}}
+            </span>
+            <span class="sorting-action deactivate">+</span>
+            <span class="sorting-action activate">-</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-body">
+
+      <div class="blog-body-article">
+        <blog-card *ngFor="let article of articles?.items" [article]="article"></blog-card>
+      </div>
+
+      <div class="blog-pages-navigation" *ngIf="pages.length > 1">
+        <button class="nav-arrow prev" (click)="prevPage()"
+                [class.disabled]="activeParams.page ? activeParams.page === 1 : true">
+          <img src="./assets/images/page/Previous.png" alt="Назад">
+        </button>
+        <div class="blog-pages-number">
+          <a class="page-number" (click)="openPage(page)"
+             [class.active]="this.activeParams.page ? this.activeParams.page === page: (page === 1)"
+             *ngFor="let page of pages">{{page}}</a>
+        </div>
+        <button class="nav-arrow next" (click)="nextPage()"
+                [class.disabled]="activeParams.page ? activeParams.page === pages.length : false">
+          <img src="./assets/images/page/Next.png" alt="Вперёд">
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

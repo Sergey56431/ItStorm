@@ -1,0 +1,78 @@
+<div class="registration" [formGroup]="registrationForm">
+  <div class="container">
+    <div class="auth-form">
+      <div class="auth-form-content">
+        <h1 class="auth-title">Регистрация на сайте</h1>
+        <div class="auth-form-inputs">
+          <div class="auth-input">
+            <input type="text" [ngStyle]="{'border-color': name?.invalid
+            && (name?.dirty || name?.touched) ? 'red' : ''}"
+                   formControlName="name"
+                   class="input" placeholder="Ваше имя">
+
+
+            <div class="input-error" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+              <div class="input-error-text" *ngIf="name?.errors?.['required']">
+                Поле обязательно для заполнения
+              </div>
+              <div class="input-error-text" *ngIf="name?.errors?.['pattern']">
+                Поле заполнено некорректно
+              </div>
+            </div>
+
+          </div>
+          <div class="auth-input">
+            <input type="text" class="input"
+                   [ngStyle]="{'border-color': email?.invalid && (email?.dirty || email?.touched) ? 'red' : ''}"
+                   formControlName="email"
+                   placeholder="Электронная почта">
+
+            <div class="input-error" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+              <div class="input-error-text" *ngIf="email?.errors?.['required']">
+                Поле обязательно для заполнения
+              </div>
+              <div class="input-error-text" *ngIf="email?.errors?.['pattern']">
+                Поле заполнено некорректно
+              </div>
+            </div>
+          </div>
+
+          <div class="auth-input">
+            <input type="password" class="input"
+                   [ngStyle]="{'border-color': password?.invalid
+                   && (password?.dirty || password?.touched) ? 'red' : ''}"
+                   formControlName="password"
+                   placeholder="Пароль">
+
+            <div class="input-error" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+              <div class="input-error-text" *ngIf="password?.errors?.['required']">
+                Поле обязательно для заполнения
+              </div>
+              <div class="input-error-text" *ngIf="password?.errors?.['pattern']">
+                Поле заполнено некорректно
+              </div>
+            </div>
+          </div>
+
+          <div class="accept">
+            <input type="checkbox" id="accept" formControlName="accept" required>
+            <label for="accept">
+              Я принимаю <a routerLink="/policy">условия пользовательского соглашения</a> и даю <a href="#">согласие на обработку
+              персональных данных</a>.
+            </label>
+          </div>
+          <div class="form-action">
+            <button [disabled]="registrationForm.invalid" (click)="registration()" class="btn">Зарегистрироваться</button>
+          </div>
+          <div class="login-ref">
+            Уже есть аккаунт? <a routerLink="/login">Войдите</a>
+          </div>
+        </div>
+      </div>
+      <div class="auth-form-image">
+        <img src="./assets/images/forms/Image.png" alt="регистрация">
+      </div>
+    </div>
+  </div>
+</div>
+

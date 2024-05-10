@@ -1,0 +1,83 @@
+@import "../../../../assets/styles/variables";
+
+.header {
+  padding: 51px 0 52px 0;
+
+  .container {
+
+    .header-content {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      color: $blue-text-color;
+      display: flex;
+      align-items: center;
+
+
+      .header-logo {
+        margin-right: 100px;
+      }
+
+      .menu {
+        width: 650px;
+        margin-right: 20px;
+
+        .menu-items {
+          display: flex;
+          list-style: none;
+
+          .menu-item {
+            margin-right: 30px;
+
+            &:last-child {
+              margin-right: 0;
+            }
+
+            a {
+              color: $blue-text-color;
+
+              &.active {
+                color: $light-blue-color;
+              }
+
+              &:hover {
+                color: $light-blue-color;
+              }
+            }
+          }
+        }
+      }
+
+      .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        .phone-number {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 500;
+          width: 128px;
+          margin-right: 15px;
+
+          a {
+            color: $light-blue-color;
+          }
+        }
+
+        .profile {
+
+          a {
+            display: flex;
+            align-items: center;
+            color: $blue-text-color;
+
+            svg {
+              margin-right: 7px;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

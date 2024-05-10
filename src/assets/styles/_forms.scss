@@ -1,0 +1,101 @@
+@import "mixins";
+@import "variables";
+
+.login {
+  padding: 106px 0 92px 0;
+}
+
+.registration {
+  padding: 120px 0;
+}
+
+.auth-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .auth-title {
+    @include lora-36;
+    margin-bottom: 40px;
+    width: 430px;
+  }
+
+  .auth-form-content {
+    width: 422px;
+
+    .auth-form-inputs {
+
+      .auth-input {
+        margin-bottom: 5px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .input-error {
+          margin-top: 5px;
+          margin-left: 22px;
+
+          .input-error-text {
+            color: red;
+            font-size: 12px;
+          }
+        }
+
+        .input {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 400;
+          outline: none;
+          border: 2px solid $light-blue-color;
+          border-radius: 3px;
+          padding: 20px 64px 20px 20px;
+          height: 53px;
+          box-sizing: border-box;
+          width: 100%;
+
+          &::placeholder {
+            color: $placeholder-color;
+          }
+        }
+
+      }
+
+      .accept {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 40px;
+
+        input {
+          margin-right: 10px;
+        }
+
+        label {
+
+          a {
+            color: $light-blue-color;
+            text-decoration: underline;
+          }
+        }
+
+      }
+
+      .form-action {
+        margin-bottom: 10px;
+
+        .btn {
+          height: 51px;
+          width: 422px;
+          font-size: 16px;
+        }
+      }
+
+      .login-ref {
+        a {
+          color: $light-blue-color;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

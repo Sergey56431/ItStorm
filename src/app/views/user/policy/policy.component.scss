@@ -1,0 +1,23 @@
+@import "src/assets/styles/variables";
+
+.policy {
+  padding: 80px 0;
+
+  .policy-text {
+    font-size: 14px;
+    line-height: 130%;
+    color: $blue-text-color;
+
+    p {
+      margin-bottom: 30px;
+    }
+  }
+
+  .reg-ref {
+    text-align: right;
+
+    a {
+      color: $light-blue-color;
+    }
+  }
+}

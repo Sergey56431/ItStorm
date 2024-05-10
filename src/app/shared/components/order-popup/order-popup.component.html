@@ -1,0 +1,67 @@
+<div class="popup" *ngIf="!thanks">
+  <div class="close-popup" (click)="closePopup()">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0.935622" y1="0.649902" x2="12.9564" y2="12.6707" stroke="#A8ABA7" stroke-linecap="round"/>
+      <line x1="12.9238" y1="0.629714" x2="0.903013" y2="12.6505" stroke="#A8ABA7" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="popup-title">
+    Заявка на услугу
+  </div>
+  <div class="popup-content" [formGroup]="popupForm">
+
+    <div class="form-group" *ngIf="order">
+      <select class="popup-select" name="company" formControlName="category" [(ngModel)]="prodItem">
+        <option *ngFor="let category of categories" [value]="category.name" >{{ category.name }}</option>
+      </select>
+    </div>
+
+    <div class="popup-input">
+      <input type="text" class="input"
+             [ngStyle]="{'border-color': name?.invalid && (name?.dirty || name?.touched) ? 'red' : ''}"
+             formControlName="name"
+             placeholder="Ваше имя">
+
+      <div class="input-error" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+        <div class="input-error-text" *ngIf="name?.errors?.['required']">
+          Поле обязательно для заполнения
+        </div>
+        <div class="input-error-text" *ngIf="name?.errors?.['pattern']">
+          Поле заполнено некорректно
+        </div>
+      </div>
+    </div>
+    <div class="popup-input">
+      <input type="password" class="input"
+             [ngStyle]="{'border-color': phone?.invalid
+                   && (phone?.dirty || phone?.touched) ? 'red' : ''}"
+             formControlName="phone"
+             placeholder="Телефон">
+
+      <div class="input-error" *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
+        <div class="input-error-text" *ngIf="phone?.errors?.['required']">
+          Поле обязательно для заполнения
+        </div>
+        <div class="input-error-text" *ngIf="phone?.errors?.['pattern']">
+          Поле заполнено некорректно
+        </div>
+      </div>
+    </div>
+    <div class="popup-action">
+      <button [disabled]="popupForm.invalid" (click)="createRequest()" class="btn popup-btn">Оставить заявку</button>
+    </div>
+  </div>
+</div>
+<div class="popup" *ngIf="thanks">
+  <div class="close-popup" (click)="closePopup()">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0.935622" y1="0.649902" x2="12.9564" y2="12.6707" stroke="#A8ABA7" stroke-linecap="round"/>
+      <line x1="12.9238" y1="0.629714" x2="0.903013" y2="12.6505" stroke="#A8ABA7" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="popup-title">Спасибо за вашу заявку!</div>
+  <div class="popup-text">Мы свяжемся с вами при первой же возможности.</div>
+  <div class="popup-action">
+    <button class="btn" (click)="closePopup()">Окей</button>
+  </div>
+</div>

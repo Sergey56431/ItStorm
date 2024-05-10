@@ -1,0 +1,61 @@
+<div class="registration" [formGroup]="loginForm">
+  <div class="container">
+    <div class="auth-form">
+      <div class="auth-form-content">
+        <h1 class="auth-title">Войти в личный кабинет</h1>
+        <div class="auth-form-inputs">
+          <div class="auth-input">
+            <input type="text" class="input"
+                   [ngStyle]="{'border-color': email?.invalid
+                   && (email?.dirty || email?.touched) ? 'red' : ''}"
+                   formControlName="email"
+                   placeholder="Электронная почта">
+
+            <div class="input-error" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+              <div class="input-error-text" *ngIf="email?.errors?.['required']">
+                Поле обязательно для заполнения
+              </div>
+              <div class="input-error-text" *ngIf="email?.errors?.['pattern']">
+                Поле заполнено некорректно
+              </div>
+            </div>
+          </div>
+
+          <div class="auth-input">
+            <input type="password" class="input"
+                   [ngStyle]="{'border-color': password?.invalid
+                   && (password?.dirty || password?.touched) ? 'red' : ''}"
+                   formControlName="password"
+                   placeholder="Пароль">
+
+            <div class="input-error" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+              <div class="input-error-text" *ngIf="password?.errors?.['required']">
+                Поле обязательно для заполнения
+              </div>
+              <div class="input-error-text" *ngIf="password?.errors?.['pattern']">
+                Поле заполнено некорректно
+              </div>
+            </div>
+
+          </div>
+          <div class="accept" >
+            <input type="checkbox" id="accept" formControlName="rememberMe">
+            <label for="accept">
+              Запомнить меня
+            </label>
+          </div>
+          <div class="form-action">
+            <button class="btn" [disabled]="loginForm.invalid" (click)="login()">Войти</button>
+          </div>
+          <div class="login-ref">
+            Нет аккаунта? <a routerLink="/registration">Пройдите регистрацию</a>
+          </div>
+        </div>
+      </div>
+      <div class="auth-form-image">
+        <img src="./assets/images/forms/ImageLog.png" alt="регистрация">
+      </div>
+    </div>
+  </div>
+</div>
+

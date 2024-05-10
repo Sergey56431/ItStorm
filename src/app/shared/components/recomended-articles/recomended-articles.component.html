@@ -1,0 +1,12 @@
+<div class="article-item">
+  <div class="article-image">
+    <div class="img" style="background-image: url({{serverStaticPath + top.image}})"></div>
+    <div class="article-category">{{top.category}}</div>
+  </div>
+  <div class="article-item-title">{{top.title}}</div>
+  <div class="article-item-text">{{top.description}}</div>
+  <div class="article-detail-ref">
+    <a [routerLink]="'/articles/' + top.url">Читать дальше</a>
+  </div>
+</div>
+

@@ -1,0 +1,377 @@
+@import "./src/assets/styles/variables";
+@import "./src/assets/styles/mixins";
+
+.main {
+
+  .container {
+
+    .main-carousel {
+      padding: 0 0 60px 0;
+      height: 500px;
+      position: relative;
+
+      .item {
+        width: 1239px;
+        height: 500px;
+      }
+
+      .main-carousel-arrow {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        top: calc(50% - 5px);
+        z-index: 2;
+
+        a {
+          display: flex;
+          position: absolute;
+          cursor: pointer;
+
+          &.move-backward {
+            left: 20px;
+          }
+
+          &.move-forward {
+            transform: rotate(180deg);
+            right: 20px;
+          }
+        }
+      }
+
+      .item-content {
+        padding: 86px 80px 85px 80px;
+
+        .item-pre-title {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 600;
+          font-size: 12px;
+          letter-spacing: 0.4em;
+          text-transform: uppercase;
+          color: $light-blue-color;
+        }
+
+        .item-title {
+          font-family: "Lora", sans-serif;
+          font-weight: 400;
+          font-size: 50px;
+          line-height: 130%;
+          color: #fff;
+          max-width: 610px;
+          margin-bottom: 20px;
+
+          span {
+            color: $light-blue-color;
+          }
+        }
+
+        .item-text {
+          font-size: 24px;
+          line-height: 130%;
+          color: #fff;
+          max-width: 456px;
+          margin-bottom: 30px;
+        }
+
+        .item-action {
+          margin-top: 20px;
+
+          .btn {
+            font-size: 16px;
+            padding: 15px 40px;
+            width: 163px;
+            height: 51px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.products {
+  padding: 60px 0;
+
+  .products-title {
+    @include lora-38;
+    margin-bottom: 40px;
+  }
+
+  .products-component {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+}
+
+.about {
+  padding: 60px 0;
+
+  .container {
+
+    .about-content {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      .about-info {
+        width: 703px;
+
+        .about-info-title {
+          @include lora-38;
+          margin-bottom: 20px;
+        }
+
+        .about-info-text {
+          font-size: 14px;
+          max-width: 633px;
+          color: $purple-text-color;
+          margin-bottom: 40px;
+
+          b {
+            font-weight: 500;
+          }
+        }
+
+        .about-info-advantages {
+
+          .advantages-title {
+            font-family: "Lora", sans-serif;
+            font-weight: 400;
+            font-size: 26px;
+            color: $light-blue-color;
+            margin-bottom: 20px;
+          }
+
+          .advantages-items {
+            display: grid;
+            grid-template-columns: repeat(2, 316px);
+            grid-template-rows: repeat(2, 90px);
+            gap: 20px 71px;
+
+            .advantages-item {
+              display: flex;
+              align-items: center;
+              column-gap: 20px;
+
+              .advantages-item-number {
+                position: relative;
+                min-width: 40px;
+                height: 40px;
+                border-radius: 100%;
+                background-color: #b9d5fd;
+
+                box-sizing: border-box;
+
+                span {
+                  position: absolute;
+                  bottom: -6px;
+                  font-family: "Lora", sans-serif;
+                  font-weight: 500;
+                  font-size: 50px;
+                  line-height: 130%;
+                  color: $light-blue-color;
+
+                  &.span-1 {
+                    left: 11px;
+                  }
+
+                  &.span-2 {
+                    left: 7px;
+                  }
+
+                  &.span-3 {
+                    left: 7px;
+                  }
+
+                  &.span-4 {
+                    left: 6px;
+                  }
+                }
+              }
+
+              .advantages-item-description {
+                font-family: "Montserrat", sans-serif;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 130%;
+                color: $purple-text-color;
+                max-width: 256px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.blog {
+  padding: 60px 0;
+
+  .container {
+
+    .blog-title {
+      @include lora-38;
+      margin-bottom: 40px;
+    }
+
+    .best-articles {
+      display: flex;
+      align-items: flex-start;
+      column-gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .blog-ref {
+
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+
+
+        span {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 500;
+          font-size: 20px;
+          color: $light-blue-color;
+          margin-right: 14px;
+        }
+      }
+
+    }
+  }
+}
+
+.reviews {
+  padding: 60px 0;
+
+  .container {
+
+    .reviews-title {
+      @include lora-38;
+      margin-bottom: 20px;
+    }
+
+    .reviews-carousel {
+      position: relative;
+
+      .review-item {
+        padding: 30px;
+        width: 396px;
+        height: 267px;
+        border: 1px solid $light-blue-color;
+        border-radius: 5px;
+        box-sizing: border-box;
+
+        .review-item-head {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+
+          .review-item-image {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin-right: 26px;
+          }
+
+          .review-item-name {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: $light-blue-color;
+          }
+        }
+
+        .review-item-text {
+          font-size: 16px;
+          line-height: 140%;
+          color: $blue-text-color;
+        }
+      }
+    }
+
+    .reviews-arrows {
+      display: flex;
+
+      a {
+        top: calc(50% - 5px);
+        display: flex;
+        position: absolute;
+        cursor: pointer;
+
+        &.move-backward {
+          left: -41px;
+        }
+
+        &.move-forward {
+          right: -41px;
+        }
+      }
+    }
+  }
+}
+
+.contacts {
+  padding: 60px 0 120px 0;
+
+  .container {
+
+    .contacts-content {
+      display: flex;
+      align-items: flex-start;
+
+      .contacts-map {
+        margin-right: 26px;
+      }
+
+      .contacts-info {
+        max-width: 501px;
+
+        .contacts-title {
+          @include lora-38;
+          margin-bottom: 20px;
+        }
+
+        .contacts-block {
+          margin-bottom: 20px;
+
+          .contacts-block-title {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            color: $light-blue-color;
+            margin-bottom: 10px;
+          }
+
+          .contacts-block-text {
+            font-size: 14px;
+            line-height: 130%;
+            color: $blue-text-color;
+          }
+
+          .contacts-block-ref {
+            font-size: 14px;
+            color: $blue-text-color;
+          }
+
+          .contacts-block-ref-icons {
+            display: flex;
+            align-items: center;
+
+            .ref-icons-item {
+
+              a:not(:last-child) {
+                margin-right: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

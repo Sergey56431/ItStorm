@@ -1,0 +1,49 @@
+@import "./src/assets/styles/variables";
+
+.product {
+  width: 290px;
+  height: 498px;
+
+  .product-image {
+    border-radius: 5px;
+    width: 291px;
+    height: 291px;
+    margin-bottom: 15px;
+  }
+
+  .product-title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: $light-blue-color;
+    margin-bottom: 10px;
+  }
+
+  .product-text {
+    font-size: 14px;
+    color: $blue-text-color;
+    height: 90px;
+    margin-bottom: 15px;
+  }
+
+  .product-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .product-action-btn {
+      .btn {
+        width: 163px;
+        height: 51px;
+        font-size: 16px;
+      }
+    }
+
+    .product-price {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: $light-blue-color;
+    }
+  }
+}
