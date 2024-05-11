@@ -13,7 +13,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {HttpErrorResponse} from "@angular/common/http";
 
 
-
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -46,7 +45,6 @@ export class DetailComponent implements OnInit {
       this.blogService.getArticle(params['url'])
         .subscribe((data: ArticleType) => {
           this.article = data;
-
           this.commentService.getArticleActions(data.id)
             .subscribe((comm: CommentActionType[]) => {
               this.actions = comm;
@@ -82,8 +80,7 @@ export class DetailComponent implements OnInit {
           if (comment.action === 'like') {
             item.like = true;
             item.dislike = false;
-          }
-          else if (comment.action === 'dislike') {
+          } else if (comment.action === 'dislike') {
             item.dislike = true;
             item.like = false;
           }
@@ -111,7 +108,7 @@ export class DetailComponent implements OnInit {
           if (data && action === 'like' || action === 'dislike') {
             this._snackBar.open('Ваш голос учтён');
           }
-          if (data && action === 'violate'){
+          if (data && action === 'violate') {
             this._snackBar.open('Ваша жалоба отправлена');
           }
           this.commentService.getArticleActions(this.article.id)
@@ -122,17 +119,17 @@ export class DetailComponent implements OnInit {
           this.blogService.getArticle(this.url)
             .subscribe(article => {
               this.article = article
+
               this.getReaction()
             })
         },
 
         error: (errorResponse: HttpErrorResponse) => {
-          if (errorResponse.error){
+          if (errorResponse.error) {
             this._snackBar.open('Жалоба уже отправлена')
           }
         }
       })
-
 
 
   }

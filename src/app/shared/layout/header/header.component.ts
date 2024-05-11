@@ -19,10 +19,9 @@ export class HeaderComponent implements OnInit {
               private _snackBar: MatSnackBar,
               private loaderService: LoaderService) {
 
-    this.loggedIn = this.authService.getIsLoggedIn();
+    this.isLogged = this.authService.getIsLoggedIn();
   }
 
-  loggedIn: boolean = false;
   userName: string = '';
 
   ngOnInit(): void {
