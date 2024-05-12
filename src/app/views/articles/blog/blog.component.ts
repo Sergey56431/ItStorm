@@ -55,13 +55,10 @@ export class BlogComponent implements OnInit {
                   this.pages.push(i)
                 }
               })
-
             this.processArticles();
           })
-
         this.processArticles();
       })
-
   }
 
   updateParams(url: string) {

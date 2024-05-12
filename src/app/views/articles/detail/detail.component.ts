@@ -101,6 +101,10 @@ export class DetailComponent implements OnInit {
   }
 
   action(action: string, comment: string) {
+    if (!this.isLogged){
+      this._snackBar.open('Необходимо авторизоваться для оправки вашей реакции')
+      return;
+    }
 
     this.commentService.appliedAction(action, comment)
       .subscribe({

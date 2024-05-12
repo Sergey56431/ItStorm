@@ -4,6 +4,7 @@ import { Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UserInfoType} from "../../../types/user-info.type";
 import {LoaderService} from "../../services/loader.service";
+import {DefaultResponseType} from "../../../types/default-response.type";
 
 @Component({
   selector: 'header-comp',
@@ -22,7 +23,7 @@ export class HeaderComponent implements OnInit {
     this.isLogged = this.authService.getIsLoggedIn();
   }
 
-  userName: string = '';
+  userInfo!: UserInfoType;
 
   ngOnInit(): void {
     this.loaderService.show();
@@ -31,8 +32,13 @@ export class HeaderComponent implements OnInit {
     });
 
     this.authService.userInfo()
-      .subscribe((data: UserInfoType) => {
-        this.userName = data.name;
+      .subscribe((data: UserInfoType | DefaultResponseType) => {
+        if ((data as DefaultResponseType).error !== undefined){
+          throw new Error ((data as DefaultResponseType).message)
+        }
+        if (data && (data as UserInfoType)){
+          this.userInfo = data as UserInfoType;
+        }
         this.loaderService.hide();
       })
   }

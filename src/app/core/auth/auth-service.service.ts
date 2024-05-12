@@ -39,8 +39,8 @@ export class AuthServiceService {
     })
   }
 
-  userInfo(): Observable<UserInfoType> {
-    return this.http.get<UserInfoType>(environment.api + 'users')
+  userInfo(): Observable<UserInfoType | DefaultResponseType> {
+    return this.http.get<UserInfoType | DefaultResponseType>(environment.api + 'users')
   }
 
   public getIsLoggedIn() {
