@@ -31,16 +31,11 @@ export class HeaderComponent implements OnInit {
       this.isLogged = isLoggedIn;
     });
 
-    this.authService.userInfo()
-      .subscribe((data: UserInfoType | DefaultResponseType) => {
-        if ((data as DefaultResponseType).error !== undefined){
-          throw new Error ((data as DefaultResponseType).message)
-        }
-        if (data && (data as UserInfoType)){
-          this.userInfo = data as UserInfoType;
-        }
-        this.loaderService.hide();
-      })
+    if (this.isLogged){
+      this.authService.getUserInfo()
+    }
+    this.loaderService.hide();
+    this.authService.userInfo.subscribe(data => this.userInfo = data)
   }
 
   logout() {

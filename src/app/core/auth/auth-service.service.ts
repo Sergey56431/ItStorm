@@ -39,9 +39,16 @@ export class AuthServiceService {
     })
   }
 
-  userInfo(): Observable<UserInfoType | DefaultResponseType> {
-    return this.http.get<UserInfoType | DefaultResponseType>(environment.api + 'users')
+  getUserInfo(){
+    this.http.get<UserInfoType | DefaultResponseType>(environment.api + 'users').subscribe(data => {
+      if ((data as DefaultResponseType).error !== undefined){
+        throw new Error ((data as DefaultResponseType).message)
+      } else {
+        this.userInfo.next(data as UserInfoType)
+      }
+    })
   }
+  userInfo: Subject<UserInfoType> = new Subject<UserInfoType>()
 
   public getIsLoggedIn() {
     return this.isLogged;
@@ -84,6 +91,7 @@ export class AuthServiceService {
   public removeTokens() {
     localStorage.removeItem(this.accessTokenKey);
     localStorage.removeItem(this.refreshTokenKey);
+    localStorage.removeItem(this.userIdKey);
     this.isLogged = false;
     this.isLoggedIn$.next(false);
   }
