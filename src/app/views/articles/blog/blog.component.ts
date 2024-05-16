@@ -60,6 +60,7 @@ export class BlogComponent implements OnInit {
             }
           })
         this.processArticles();
+
       })
   }
 
